@@ -1,0 +1,20 @@
+<h1>Update Department</h1>
+<!-- department-form.component.html -->
+<form id="updateDepartmentForm" >
+  <div class="form-group">
+    <label for="departmentId">department Id:</label>
+    <input type="text" id="id" [(ngModel)]="department.id" name="id" />
+  </div>
+  <div class="form-group">
+    <label for="name">Department Name</label>
+    <input type="text" id="name" [(ngModel)]="department.name" name="name" />
+  </div>
+  <div class="form-group">
+    <label for="head">Department Head</label>
+    <input type="text" id="head" [(ngModel)]="department.head" name="head" />
+  </div>
+  <div class="form-group">
+    <input type="submit" value="Update" (click)="updateDepartment(department)"/>
+  </div>
+</form>
+<button><a href="#/" ><<Back to List</a></button>
