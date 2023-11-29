@@ -12,6 +12,7 @@ import { AddDepartmentComponent } from "./components/add-department/add-departme
 import { UpdateDepartmentComponent } from "./components/update-department/update-department.component";
 import { ContactUsComponent } from "./components/contact-us/contact-us.component";
 import { AboutUsComponent } from "./components/about-us/about-us.component";
+import { DataTablesModule } from "angular-datatables/src/angular-datatables.module";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -34,12 +35,13 @@ const routes: Routes = [
     UpdateDepartmentComponent,
     ContactUsComponent,
     AboutUsComponent,
+    
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    FormsModule,
+    FormsModule,DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent],

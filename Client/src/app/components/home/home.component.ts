@@ -5,7 +5,9 @@ import { EmployeeService } from '../../services/employee.service';
 import { Department } from 'src/app/services/department';
 import { DepartmentService } from 'src/app/services/department.service';
 import { Router } from '@angular/router';
+import * as $ from 'jquery';
 
+import { DataTablesModule } from 'angular-datatables';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,14 +16,29 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   public employees: Employee[];
   public departments: Department[];
-  
+  datatable: any;
 
   constructor(private employeeService: EmployeeService,private departmentService:DepartmentService,private router: Router) { }
   
   ngOnInit() {
     this.getEmployees();
     this.getDepartments();
+    // Initialize DataTables settings
+    this.datatable = $('#yourDataTable').DataTable({
+      // DataTables options here
+    });
     
+  }
+  ngAfterViewInit() {
+    // Trigger DataTables update after the view has been initialized
+    this.datatable.draw();
+  }
+
+  ngOnDestroy() {
+    // Destroy DataTables when the component is destroyed to prevent memory leaks
+    if (this.datatable) {
+      this.datatable.destroy();
+    }
   }
   public getEmployees(): void {
     this.employeeService.getEmployees().subscribe(

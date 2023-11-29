@@ -1,5 +1,6 @@
 .listusers{
   margin: 10% ;
+  max-width: 1000;
 }
 h1 {
     color: #333;
